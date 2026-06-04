@@ -1,0 +1,88 @@
+name: Bug report
+description: Report a problem with the paperclip-spend-guard plugin
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report!
+
+        Before submitting, please:
+        - Search existing issues to avoid duplicates.
+        - **Redact anything sensitive** from any config or logs you paste.
+        - Note that questions about Paperclip itself belong on the
+          [Paperclip repo](https://github.com/paperclipai/paperclip).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the bug, including what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal, step-by-step instructions to reproduce the behavior.
+      placeholder: |
+        1. Configure spend-guard with ceilings '...'
+        2. Run an agent until '...'
+        3. Observe wrong attribution / missing alert / etc.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Spend attribution (per agent / issue / day)
+        - Budget alerts (warn / ceiling)
+        - Pause-on-ceiling enforcement
+        - spend_guard_status tool
+        - Plugin install / manifest / config
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: plugin-config
+    attributes:
+      label: Plugin config (sensitive values redacted)
+      description: The spend-guard configuration used (ceilings, warn ratio, enforcement flag).
+      render: json
+    validations:
+      required: false
+  - type: input
+    id: paperclip-version
+    attributes:
+      label: Paperclip version
+      placeholder: e.g. 0.3.1
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      description: Version of paperclip-spend-guard.
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste any relevant plugin log output. This will be rendered as code, so no backticks needed.
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node.js version, and deployment context.
+      placeholder: |
+        - OS: Ubuntu 24.04
+        - Node: 20.11.0
+        - Deployment: Docker / self-hosted
+    validations:
+      required: true

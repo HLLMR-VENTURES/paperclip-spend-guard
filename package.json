@@ -1,0 +1,58 @@
+{
+  "name": "paperclip-spend-guard",
+  "version": "0.1.0",
+  "description": "Paperclip plugin: cost visibility and budget guardrails for an agent workforce on metered models. Attributes reported spend per agent, per issue, and per day; alerts at warn/ceiling thresholds; optional opt-in pause-on-ceiling enforcement. No API keys or secret refs required.",
+  "type": "module",
+  "license": "MIT",
+  "author": "HLLMR",
+  "homepage": "https://github.com/HLLMR/paperclip-spend-guard#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HLLMR/paperclip-spend-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HLLMR/paperclip-spend-guard/issues"
+  },
+  "keywords": [
+    "paperclip",
+    "paperclip-plugin",
+    "budget",
+    "cost",
+    "guardrail",
+    "spend",
+    "ai-agent",
+    "finops",
+    "orchestration"
+  ],
+  "paperclipPlugin": {
+    "manifest": "./dist/manifest.js",
+    "worker": "./dist/worker.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./manifest": "./dist/manifest.js",
+    "./worker": "./dist/worker.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc && node scripts/run-tests.mjs",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@paperclipai/plugin-sdk": "^2026.529.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
