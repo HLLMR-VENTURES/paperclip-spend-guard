@@ -6,6 +6,18 @@
 [![node](https://img.shields.io/node/v/paperclip-spend-guard.svg)](https://www.npmjs.com/package/paperclip-spend-guard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+> ⚠️ **Status: built and tested, but NOT yet functional — blocked upstream. Unpublished by design.**
+> Paperclip's shipped build (`ghcr.io/paperclipai/paperclip:latest`, June 2026) does **not** expose run
+> cost to plugins through any working channel, verified three ways against the compiled host:
+> 1. the `cost_event.created` plugin event is declared in `PLUGIN_EVENT_TYPES` but **never emitted**;
+> 2. `budget.incident.*` is written to the **activity log only**, never to the plugin event bus;
+> 3. the `costs.list` / `costs.get` host methods are **declared in the capability validator but never implemented**.
+>
+> The cost data exists in the host's `costService`, but a plugin currently has no way to read it (push or pull),
+> so spend-guard would report **$0 forever**. This is a platform gap, not a bug in this code — which is
+> forward-compatible and will light up the day Paperclip wires any one of the three channels above.
+> **Do not publish or rely on it until then.**
+
 A [Paperclip](https://github.com/paperclipai/paperclip) **plugin** that gives an
 agent workforce running on metered models (e.g. via
 [paperclip-openrouter](https://github.com/HLLMR/paperclip-openrouter)) cost
