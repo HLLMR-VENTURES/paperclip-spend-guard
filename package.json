@@ -46,7 +46,7 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "@paperclipai/plugin-sdk": "^2026.529.0"
+    "@paperclipai/plugin-sdk": "^2026.618.0"
   },
   "devDependencies": {
     "@types/node": "^24.6.0",
